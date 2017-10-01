@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { counter } from '../reducers/count';
-import { increaseCounter, decreaseCounter } from '../reducers/count';
+import { increaseCounter, decreaseCounter, incrementAsync } from '../reducers/count';
 
 class Counter extends Component {
   handleIncCounter = (evt) => {
     evt.preventDefault()
-    this.props.increaseCounter()
+    this.props.incrementAsync()
   }
   handleDecCounter = (evt) => {
     evt.preventDefault()
@@ -29,5 +28,5 @@ export default connect(
   (state) => {
     return {count: state.count}
   },
-  {increaseCounter, decreaseCounter}
+  {increaseCounter, decreaseCounter, incrementAsync}
 )(Counter)

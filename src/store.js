@@ -2,6 +2,7 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import countReducer from './reducers/count';
 import loggerMiddleware from './lib/loggerMiddleware'
 import { createLogger } from 'redux-logger';
+import thunk from 'redux-thunk'
 
 const reducer = combineReducers({
   count: countReducer
@@ -14,6 +15,6 @@ const reducer = combineReducers({
    https://github.com/evgenyrodionov/redux-logger#options
 */
 const logger = createLogger()
-const store = createStore(reducer, applyMiddleware(logger))
+const store = createStore(reducer, applyMiddleware(logger, thunk))
 
 export default store
