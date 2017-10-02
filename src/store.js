@@ -1,11 +1,14 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import countReducer from './reducers/count';
+import post from './reducers/post';
+
 import loggerMiddleware from './lib/loggerMiddleware'
 import { createLogger } from 'redux-logger';
 import thunk from 'redux-thunk'
 
 const reducer = combineReducers({
-  count: countReducer
+  count: countReducer,
+  post
 })
 
 // 미들웨어가 여러개인경우에는 파라미터로 여러개를 전달해주면 됩니다. 예: applyMiddleware(a, b, c)

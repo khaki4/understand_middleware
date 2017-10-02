@@ -5,17 +5,6 @@ export const increaseCounter = () => ({ type: COUNT_INCREASE })
 export const decreaseCounter = () => ({ type: COUNT_DECRESE })
 
 export const incrementAsync = () => (dispatch, getState) => {
-/**
- * 1 초 뒤 dispatch 합니다.
- * 내부적으로 store.dispatch(increaseCounter()) 실행
- *
- *
- * setTimeout(() => dispatch(increaseCounter()), 1000);
- */
-
- /**
-  * 조건에 따른 분기
-  */
 
   const { count } = getState()
 
