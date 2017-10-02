@@ -6,12 +6,22 @@ import { getPostPending, getPostSuccess, getPostFailure, getPost } from '../redu
 
 class Counter extends Component {
   componentDidMount() {
-    const { getPost, count } = this.props
-    getPost(count.count)
+    const { count } = this.props
+    this.asyncGetPost(count.count)
   }
   componentWillReceiveProps(nextProps) {
     if (this.props.count.count !== nextProps.count.count) {
-     this.props.getPost(nextProps.count.count)
+      this.asyncGetPost(nextProps.count.count)
+    }
+  }
+  
+  asyncGetPost = async (postId) => {
+    const { getPost } = this.props
+    try {
+      await getPost(postId)
+      console.log('요청이 완료된 다음에 실행됨')
+    } catch (e) {
+      console.log('에러가 발생!', e.message)
     }
   }
   
